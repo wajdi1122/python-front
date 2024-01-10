@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajouter Client</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        form {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Ajouter Client</h1>
+
+    <form id="voitureForm">
+        <label for="marque">Nom</label>
+        <input type="text" id="marque" name="marque" required><br>
+
+        <label for="modele">Prenom</label>
+        <input type="text" id="modele" name="modele" required><br>
+
+        <label for="etat">Adresse</label>
+        <input type="text" id="etat" name="etat" required><br>
+
+        <button type="button" onclick="ajouterClient()">Ajouter Client</button>
+    </form>
+
+    <script>
+        function ajouterClient() {
+            var marque = document.getElementById("marque").value;
+            var modele = document.getElementById("modele").value;
+            var etat = document.getElementById("etat").value;
+
+            if (!marque || !modele || !etat) {
+        alert('Veuillez remplir tous les champs correctement.');
+        return;
+    }
+            // Créer l'objet JSON
+            var voitureData = {
+                "Nom": marque,
+                "Prenom": modele,
+                "adresse": etat
+            };
+            
+            // Envoyer la requête HTTP POST
+            fetch('http://127.0.0.1:5000/ajouter_locataire', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(voitureData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Réponse du serveur:', data);
+               location.replace("file:///C:/Users/wajdi/Desktop/material-dashboard-2/material-dashboard-2/tables.html")
+            })
+            .catch(error => {
+                console.error('Erreur lors de la requête:', error);
+            });
+        }
+    </script>
+</body>
+</html>

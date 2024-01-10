@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Display</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<h1>Reserver une voiture</h1>
+  <div class="text-white text-capitalize ps-3">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="startDate">Start Date:</label>
+          <input type="date" class="form-control" id="startDate" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="endDate">End Date:</label>
+          <input type="date" class="form-control" id="endDate" required>
+        </div>
+      </div>
+      <button type="button" class="btn btn-primary" onclick="fetchAndDisplayCars()">Show Cars</button>
+    </form>
+
+    <table class="table mt-4">
+      <thead>
+        <tr>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Marque</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Modele </th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kilometrage</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Etat</th>
+            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Prix location</th>
+        </tr>
+      </thead>
+      <tbody id="carsTableBody">
+        <!-- Table body goes here -->
+      </tbody>
+    </table>
+    <dialog id="myDialog">
+      <form>
+          <label for="nom">Nom :</label>
+          <input type="text" id="nom" name="nom" required>
+          <br>
+          <label for="prenom">Prénom :</label>
+          <input type="text" id="prenom" name="prenom" required>
+          <br>
+          <button type="button" onclick="submitForm()">Soumettre</button>
+          <button type="button" onclick="closeDialog()">Fermer</button>
+      </form>
+  </dialog>
+  </div>
+
+  <script src="./assets/js/voiture_non_alooer.js"></script>
+
+  <!-- Bootstrap JS and Popper.js scripts (required for Bootstrap components) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
